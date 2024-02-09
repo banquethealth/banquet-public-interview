@@ -1,7 +1,13 @@
-import { dummy } from '../src';
+import { Dummy } from '../src';
 
 describe('dummy import test', () => {
-  it('is true', () => {
-    expect(dummy()).toBeTruthy();
+  let thisDummy
+
+  beforeAll(() => {
+    thisDummy = new Dummy('hello world')
+  })
+
+  it('hello world', () => {
+    expect(thisDummy.getMsg()).toEqual('hello world');
   });
 });
