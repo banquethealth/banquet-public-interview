@@ -23,7 +23,7 @@ npm run db-down   # Stop the postgres container
 
 If the unit tests are successful, you are ready to go!
 
-## Optional DB Gui Setup
+## Optional DB GUI Setup
 
 You can also optionally confirm that you are able to connect to the database via your preferred GUI.
 
