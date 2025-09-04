@@ -1,4 +1,4 @@
-name: banquet-health-take-home-exercise
+name: banquet-health-case-challenge
 
 services:
   postgres:
