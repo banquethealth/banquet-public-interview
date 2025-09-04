@@ -25,7 +25,7 @@ If the unit tests are successful, you are ready to go!
 
 ## Optional DB GUI Setup
 
-You can also optionally confirm that you are able to connect to the database via your preferred GUI.
+You can also optionally confirm that you are able to connect to the database via your preferred GUI.  You must do this __before__ running `npm run db-down`.
 
 - Host: 127.0.0.1
 - Port: 5442 (not the default 5432, to avoid conflicts)
