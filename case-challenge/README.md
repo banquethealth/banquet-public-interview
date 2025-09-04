@@ -12,13 +12,13 @@ None of the code in this repository is intended to be used in the interview itse
 
 ## Setup
 
-Make sure you are in the `case-challenge` directory of this repository
+Make sure you are in the `case-challenge` directory of this repository.  Wait a few seconds after running `npm run db-up` to give the docker container time to spin up.
 
 ```
 npm install
 npm run db-up     # Start the Postgres container
-npx prisma generate 
-npx jest
+npm run test
+npm run db-down   # Stop the postgres container
 ```
 
 If the unit tests are successful, you are ready to go!
@@ -32,3 +32,6 @@ You can also optionally confirm that you are able to connect to the database via
 - Database: dev
 - User: postgres
 - Password: local
+
+Sample Query:
+select * from animals;
