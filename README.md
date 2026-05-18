@@ -1,6 +1,6 @@
-# Banquet Health Case Challenge Environment Setup
+# Banquet Health Technical Round Interviews Environment Setup
 
-The purpose of this repository is to test your environment setup for the Banquet Health interview.
+The purpose of this repository is to test your environment setup for the Banquet Health technical round interviews.
 None of the code in this repository is intended to be used in the interview itself.
 
 ## Prerequisites
@@ -12,7 +12,7 @@ None of the code in this repository is intended to be used in the interview itse
 
 ## Setup
 
-Make sure you are in the `case-challenge` directory of this repository.  Wait a few seconds after running `npm run db-up` to give the docker container time to spin up.
+Wait a few seconds after running `npm run db-up` to give the docker container time to spin up.
 
 ```
 npm install
