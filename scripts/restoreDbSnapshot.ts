@@ -1,8 +1,9 @@
 import { PrismaClient } from "@prisma/client";
-import { dbName, runCommand, seedDataDir } from "./utils"
+import { adminDatabaseUrl, dbName, runCommand, seedDataDir } from "./utils"
 
 // Need to connect to different database in order to drop the dev database
-process.env.DATABASE_URL = 'postgresql://postgres:local@localhost:5442/postgres'
+process.env.DATABASE_URL = adminDatabaseUrl
+
 const db = new PrismaClient()
 
 const resetDb = async () => {
@@ -23,4 +24,5 @@ resetDbFromSnapshot()
     })
     .catch((err) => {
         console.error(err)
+        process.exit(1)
     })

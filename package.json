@@ -29,10 +29,10 @@
     "typescript": "^5.2.2"
   },
   "dependencies": {
-    "@prisma/client": "^5.4.2"
+    "@prisma/client": "^5.4.2",
+    "dotenv": "^17.4.2"
   },
   "prisma": {
     "seed": "ts-node prisma/seed/seed.ts"
   }
 }
-
