@@ -1,11 +1,14 @@
+import { join } from "path"
 import { dbName, runCommand, seedDataDir } from "./utils"
 
 const saveDbSnapshot = async () => {
+    const snapshotPath = join(seedDataDir, 'snapshot.sql')
+
     await runCommand(
         `npx prisma migrate reset --force`
     )
     await runCommand(
-        `docker run -e PGPASSWORD=local -e TZ=America/New_York -v ${seedDataDir}:/tmp --network host postgres:16 pg_dump --host=127.0.0.1 -p 5442 --dbname=${dbName} --username=postgres --file=/tmp/snapshot.sql --format=t`
+        `docker compose -f docker/docker-compose.yml exec -T -e PGPASSWORD=local -e TZ=America/New_York postgres pg_dump --host=127.0.0.1 -p 5432 --dbname=${dbName} --username=postgres --format=t > "${snapshotPath}"`
       )
 }
 

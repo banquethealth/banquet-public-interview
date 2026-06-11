@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "db-up": "docker compose -f docker/docker-compose.yml up -d",
-    "db-down": "docker compose -f docker/docker-compose.yml down -v",
+    "db-up": "docker compose -f docker/docker-compose.yml up -d --wait",
+    "db-down": "docker compose -f docker/docker-compose.yml down -v --remove-orphans",
     "save-db": "ts-node scripts/saveDbSnapshot.ts",
     "init-db": "npm run reset-db",
     "reset-db": "ts-node scripts/restoreDbSnapshot.ts",
