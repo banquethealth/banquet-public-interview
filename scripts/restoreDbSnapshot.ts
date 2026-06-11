@@ -1,8 +1,10 @@
 import { PrismaClient } from "@prisma/client";
-import { dbName, runCommand, seedDataDir } from "./utils"
+import { join } from "path"
+import { adminDatabaseUrl, dbName, runCommand, seedDataDir } from "./utils"
 
 // Need to connect to different database in order to drop the dev database
-process.env.DATABASE_URL = 'postgresql://postgres:local@localhost:5442/postgres'
+process.env.DATABASE_URL = adminDatabaseUrl
+
 const db = new PrismaClient()
 
 const resetDb = async () => {
@@ -11,9 +13,11 @@ const resetDb = async () => {
 }
 
 const resetDbFromSnapshot = async () => {
+    const snapshotPath = join(seedDataDir, 'snapshot.sql')
+
     await resetDb()
     await runCommand(
-        `docker run -e PGPASSWORD=local -v ${seedDataDir}:/tmp --network host postgres:16 pg_restore --host=127.0.0.1 -p 5442 --disable-triggers --dbname=${dbName} --username=postgres /tmp/snapshot.sql`
+        `docker compose -f docker/docker-compose.yml exec -T -e PGPASSWORD=local postgres pg_restore --host=127.0.0.1 -p 5432 --disable-triggers --dbname=${dbName} --username=postgres < "${snapshotPath}"`
     )
 }
 
@@ -23,4 +27,5 @@ resetDbFromSnapshot()
     })
     .catch((err) => {
         console.error(err)
+        process.exit(1)
     })
